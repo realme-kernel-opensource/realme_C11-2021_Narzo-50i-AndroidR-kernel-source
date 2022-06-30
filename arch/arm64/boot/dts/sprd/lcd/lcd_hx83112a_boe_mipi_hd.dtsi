@@ -1,0 +1,132 @@
+
+/*
+ * R61350 Truly LCD config dtsi file for spreadtrum
+ *
+ * Copyright (C) 2018, Spreadtrum Communications Inc.
+ *
+ * SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+ */
+
+/ {
+	fragment {
+		target-path = "/";
+		__overlay__ {
+			lcds {
+				lcd_hx83112a_boe_mipi_hd: lcd_hx83112a_boe_mipi_hd {
+
+					sprd,dsi-work-mode = <1>; /* video burst mode*/
+					sprd,dsi-lane-number = <4>;
+					sprd,dsi-color-format = "rgb888";
+
+					sprd,phy-bit-clock = <660000>;	/* kbps */
+					sprd,phy-escape-clock = <20000>;/* kHz */
+
+					sprd,width-mm = <68>;
+					sprd,height-mm = <151>;
+
+					sprd,esd-check-enable = <1>;
+					sprd,esd-check-mode = <1>;
+					sprd,esd-check-period = <2000>;
+					/* sprd,esd-check-register = <0x0A>; */
+					/* sprd,esd-check-value = <0x9C>; */
+
+					sprd,reset-on-sequence = <1 5>, <0 5>, <1 20>;
+					sprd,reset-off-sequence = <0 5>;
+
+ 
+					sprd,use-dcs-write;
+					sprd,initial-command = [
+						39 00 00 04 B9 83 11 2A
+						39 00 00 09 B1 08 27 27 80 80 4A 4F AA
+						39 00 00 10 B2 00 02 00 62 40 00 0F 34 12 11 04 01 15 A3 87
+						39 00 00 1C B4 04 DF 04 DF 00 00 08 DF 00 00 08 DF 00 FF 00 FF 00 00 0C 0F 00 36 08 0D 0F 00 36
+						39 00 00 11 BA 73 23 64 33 33 33 33 11 10 00 00 10 08 3D 02 76
+						39 00 00 03 C0 22 22
+						39 00 00 02 C1 01
+						39 00 00 07 C7 00 00 04 E0 33 00
+						39 00 00 02 E9 C3
+						39 00 00 03 CB D2 24
+						39 00 00 02 E9 3F
+						39 00 00 02 CC 08
+						39 00 00 03 D2 2B 2B   
+						39 00 00 30 D3 C0 00 00 00 00 01 00 14 14 03 01 11 08 08 08 08 08 32 10 05 00 00 32 10 0F 00 0F 32 10 0F 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 EA 1C
+						39 00 00 31 D5 18 18 18 18 18 18 18 18 18 18 18 18 18 18 C0 C0 C0 C0 18 18 40 40 18 18 18 18 31 31 30 30 2F 2F 01 00 03 02 20 20 C0 C0 C0 C0 19 19 40 40 25 24
+						39 00 00 31 D6 18 18 18 18 18 18 18 18 18 18 18 18 18 18 40 40 40 40 18 18 40 40 18 18 18 18 31 31 30 30 2F 2F 02 03 00 01 20 20 40 40 40 40 40 40 19 19 24 25
+						39 00 00 0D D8 AA AA AA AA FF EA AA AA AA AA FF EA
+						39 00 00 1A E7 0F 0F 1E 76 1E 74 00 50 20 14 00 00 02 02 02 05 14 14 32 B9 23 B9 08 13 69
+						39 00 00 02 BD 01
+						39 00 00 05 BF 1A BF 01 0A
+						39 00 00 04 B1 64 01 09
+						39 00 00 04 CB 25 11 01
+						39 00 00 3A C1 FF F9 F5 F3 EC E7 E2 D7 D1 CB C5 C0 BB B5 AF A9 A3 9E 98 8E 84 7A 71 68 60 58 50 49 43 3D 36 2F 29 23 1E 19 13 0E 0A 06 03 02 01 01 00 00 2C FE 57 ED 3E 15 46 A0 B0 1C 40
+						39 00 00 0D D8 AA AA AF FF FF FF AA AA AF FF FF FF
+						39 00 00 09 E7 02 00 6C 01 6E 0E 48 0F
+						39 00 00 02 BD 02
+						39 00 00 0A B4 00 89 12 11 88 12 12 00 53
+						39 00 00 3A C1 FF FB F7 F1 EC E7 E2 D7 D2 CC C6 C1 BB B5 AF A9 A3 9D 98 8D 83 7A 71 67 5F 57 4F 49 42 3C 35 2F 29 23 1E 19 13 0E 0A 06 03 02 01 01 00 33 FB BD 96 F6 93 BC ED 50 B4 6C 40
+						39 00 00 0D D8 AA AA AF FF FF FF AA AA AF FF FF FF
+						39 00 00 1E E7 00 00 08 40 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 04 00 70 01 70 02 00
+						39 00 00 02 BD 03
+						39 00 00 19 D8 AA AA AE BF AA BE AA AA AE BF AA BE AA AA AF FF FF FF AA AA AF FF FF FF
+						39 00 00 3A C1 FF FA F6 F0 EB E6 E1 D6 D1 CB C5 BF B9 B3 AD A8 A2 9C 96 8C 82 79 70 67 5F 57 4F 48 42 3C 35 2F 29 23 1E 19 13 0E 0A 06 03 02 01 01 00 33 E5 02 E8 1E 95 6B DD 60 B4 6D 00
+						39 00 00 02 BD 00
+						39 00 00 05 CF 00 14 00 C0
+						39 00 00 1B E4 2D 01 2C 00 08 00 10 08 04 04 00 80 40 E8 34 70 98 C8 FF A5 FF EF 10 38 10 00
+						39 00 00 02 BD 01
+						39 00 00 04 CB 25 11 01
+						39 00 00 02 BD 00
+						39 00 00 03 CE 05 10
+						39 00 00 3D E6 55 88 55 11 AA 00 EE 33 00 A6 00 00 00 11 AA 33 66 33 00 AA 33 66 33 00 AA 33 66 33 00 AA 33 66 33 00 AA 33 66 33 00 AA 33 66 33 00 AA 33 66 33 00 AA 33 66 33 00 AA 33 66 33 00 AA
+						39 00 00 06 E5 06 00 E8 00 FD
+						05 78 00 01 11
+						39 00 00 02 35 00 
+						39 00 00 03 5E 00 04
+						
+						39 00 00 05 C9 04 07 29 01
+						39 0A 00 02 55 00 
+						39 00 00 02 53 24 
+						05 32 00 01 29
+						];
+
+					sprd,sleep-in-command = [
+						15 32 00 01 28
+						15 96 00 01 10
+						29 00 00 02 B0 00
+						29 14 00 02 B1 01
+						];
+
+					sprd,sleep-out-command = [
+						15 78 00 01 11
+						15 32 00 01 29
+						15 01 00 02 B0 00
+						15 01 00 02 B1 01
+						];
+
+					display-timings {
+						native-mode = <&hx83112a_boe_timing0>;
+
+						hx83112a_boe_timing0: timing0 {
+							clock-frequency = <96000000>;
+							hactive = <720>;
+							vactive = <1600>;
+							hback-porch = <72>;
+							hfront-porch = <100>;
+							vback-porch = <15>;
+							vfront-porch = <54>;
+							hsync-len = <60>;
+							vsync-len = <2>;
+						};
+					};
+
+					oled-backlight {
+						default-brightness = <1306>;
+						sprd,max-level = <4095>;
+						brightness-levels = [
+            		    	39 00 00 03 51 00 04
+						];
+					};
+				};
+			};
+		};
+	};
+};
